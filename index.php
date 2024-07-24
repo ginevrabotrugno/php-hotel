@@ -82,9 +82,9 @@
 
         </form>
 
-        <table class="table">
+        <table class="table text-center">
             <thead>
-                <tr>
+                <tr class="text-uppercase">
                     <?php
                         // Usare il primo hotel per ottenere le chiavi
                         $firstHotel = $hotels[0];
