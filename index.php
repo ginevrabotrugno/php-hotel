@@ -39,12 +39,10 @@
 
     ];
 
+   
     foreach ($hotels as $hotel) {
-        echo "Nome: " . $hotel['name'] . "<br>";
-        echo "Descrizione: " . $hotel['description'] . "<br>";
-        echo "Parcheggio: " . ($hotel['parking'] ? 'Sì' : 'No') . "<br>";
-        echo "Voto: " . $hotel['vote'] . "<br>";
-        echo "Distanza dal centro: " . $hotel['distance_to_center'] . " km<br><br>";
+        $distance =  $hotel['distance_to_center'] . ' Km';
+        // var_dump($distance);
     }
     
 ?>
@@ -88,17 +86,32 @@
             <thead>
                 <tr>
                     <?php
-                        foreach ($hotel as $key => $value) {
-                            echo "<th> $key </th>";
-                        } 
+                        // Usare il primo hotel per ottenere le chiavi
+                        $firstHotel = $hotels[0];
+                        foreach ($firstHotel as $key => $value) {
+                            echo "<th>" . $key . "</th>";
+                        }
                     ?>
                 </tr>
             </thead>
+
             <tbody class="table-group-divider">
                 <?php foreach ($hotels as $hotel): ?>
                 <tr>
                     <?php foreach($hotel as $key => $value): ?>
-                        <td> <?php echo ($key == 'parking') ? ($value ? 'Sì' : 'No') : $value; ?> </td>
+                        <td> 
+                            <?php 
+
+                                if ($key == 'parking') {
+                                    echo $value ? 'Sì' : 'No';
+                                } elseif ($key == 'distance_to_center') {
+                                    echo $value = $distance;
+                                } else {
+                                    echo $value;
+                                }
+                               
+                           ?>
+                        </td>
                     <?php endforeach; ?>
                 </tr>
                 <?php endforeach; ?>
