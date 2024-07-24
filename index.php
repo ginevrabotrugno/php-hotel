@@ -44,7 +44,8 @@
         $distance =  $hotel['distance_to_center'] . ' Km';
         // var_dump($distance);
     }
-    
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,13 +59,14 @@
     <h1>PHP Hotel</h1>
     <section class="container">
 
-        <form action="index.php">
+        <form action="index.php" method= "GET">
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">1</label>
+                <input class="form-check-input" type="checkbox" name="parking" id="inlineCheckbox1" value="1">
+                <label class="form-check-label" for="inlineCheckbox1">Parking</label>
             </div>
 
+            <span> Vote:  </span>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                 <label class="form-check-label" for="inlineRadio1">1</label>
@@ -77,8 +79,17 @@
                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
                 <label class="form-check-label" for="inlineRadio3">3 </label>
             </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+                <label class="form-check-label" for="inlineRadio3">4 </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+                <label class="form-check-label" for="inlineRadio3">5 </label>
+            </div>
 
-            <button type="button" class="btn btn-primary">Filtra</button>
+            <button type="button" class="btn btn-primary">Filter</button>
+            <button type="button" class="btn btn-secondary">Reset</button>
 
         </form>
 
