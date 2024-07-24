@@ -87,43 +87,22 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">First Col</th>
-                    <th scope="col">Second Col</th>
-                    <th scope="col">Third Col</th>
+                    <?php
+                        foreach ($hotel as $key => $value) {
+                            echo "<th> $key </th>";
+                        } 
+                    ?>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
+                <?php foreach ($hotels as $hotel): ?>
                 <tr>
-                    <td>string</td>
-                    <td>string</td>
-                    <td>string</td>
+                    <?php foreach($hotel as $key => $value): ?>
+                        <td> <?php echo ($key == 'parking') ? ($value ? 'Sì' : 'No') : $value; ?> </td>
+                    <?php endforeach; ?>
                 </tr>
-                <tr>
-                    <td>string</td>
-                    <td>string</td>
-                    <td>string</td>
-                </tr>
-                <tr>
-                    <td>string</td>
-                    <td>string</td>
-                    <td>string</td>
-                </tr>
-                <tr>
-                    <td>string</td>
-                    <td>string</td>
-                    <td>string</td>
-                </tr>
-                <tr>
-                    <td>string</td>
-                    <td>string</td>
-                    <td>string</td>
-                </tr>
-                <tr>
-                    <td>string</td>
-                    <td>string</td>
-                    <td>string</td>
-                </tr>
-            </tbody>
+                <?php endforeach; ?>
+            </tbody>        
         </table>
 
     </section>
