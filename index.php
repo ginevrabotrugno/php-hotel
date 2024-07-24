@@ -45,6 +45,9 @@
         // var_dump($distance);
     }
 
+    $show_parking = $_GET['is_parking'];
+    var_dump($show_parking);
+
 
 ?>
 <!DOCTYPE html>
@@ -62,7 +65,7 @@
         <form action="index.php" method= "GET">
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="parking" id="inlineCheckbox1" value="1">
+                <input class="form-check-input" type="checkbox" name="is_parking" id="inlineCheckbox1" value="1">
                 <label class="form-check-label" for="inlineCheckbox1">Parking</label>
             </div>
 
