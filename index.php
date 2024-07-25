@@ -67,13 +67,6 @@
         }
     }
 
-   
-    foreach ($hotels as $hotel) {
-        $distance =  $hotel['distance_to_center'] . ' Km';
-        // var_dump($distance);
-    }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -144,6 +137,7 @@
                                 if ($key == 'parking') {
                                     echo $value ? 'Sì' : 'No';
                                 } elseif ($key == 'distance_to_center') {
+                                    $distance =  $hotel['distance_to_center'] . ' Km';
                                     echo $value = $distance;
                                 } else {
                                     echo $value;
