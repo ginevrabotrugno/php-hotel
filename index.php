@@ -42,19 +42,29 @@
     // inizializzo array che stampa hotel con parcheggio
     $filtered_hotels = [];
 
-    var_dump($_GET);
+    $vote = isset($_GET['inlineRadioOptions']) ? $_GET['inlineRadioOptions'] : 0;
+    // var_dump($vote);
 
-    if (isset($_GET['is_parking'])) {
+    // var_dump($_GET);
+
+    if (!isset($_GET['is_parking'])) {
         // se il form invia parking eseguo il filtro
         foreach ($hotels as $hotel) {
-            // se parking è true aggiungo l'hotel all'array
-            if($hotel['parking']){
+            if ($hotel['vote'] >= $vote) {
                 $filtered_hotels[] = $hotel;
             }
+            // // se parking è true aggiungo l'hotel all'array
+            // if($hotel['parking']){
+            //     $filtered_hotels[] = $hotel;
+            // }
         }
         // se non invia stampo tutti gli hotel
     } else {
-        $filtered_hotels = $hotels;
+        foreach($hotels as $hotel){
+            if ($hotel['parking'] && $hotel['vote'] >= $vote) {
+                $filtered_hotels[] = $hotel;
+            }
+        }
     }
 
    
@@ -84,26 +94,26 @@
                 <label class="form-check-label" for="inlineCheckbox1">Parking</label>
             </div>
 
-            <span> Vote:  </span>
+            <span> Vote(min):  </span>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
                 <label class="form-check-label" for="inlineRadio1">1</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
                 <label class="form-check-label" for="inlineRadio2">2</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3" >
                 <label class="form-check-label" for="inlineRadio3">3 </label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
-                <label class="form-check-label" for="inlineRadio3">4 </label>
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="4" >
+                <label class="form-check-label" for="inlineRadio4">4 </label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
-                <label class="form-check-label" for="inlineRadio3">5 </label>
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="5" >
+                <label class="form-check-label" for="inlineRadio5">5 </label>
             </div>
 
             <button type="submit" class="btn btn-primary">Filter</button>
