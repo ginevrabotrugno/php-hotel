@@ -39,14 +39,29 @@
 
     ];
 
+    // inizializzo array che stampa hotel con parcheggio
+    $filtered_hotels = [];
+
+    var_dump($_GET);
+
+    if (isset($_GET['is_parking'])) {
+        // se il form invia parking eseguo il filtro
+        foreach ($hotels as $hotel) {
+            // se parking è true aggiungo l'hotel all'array
+            if($hotel['parking']){
+                $filtered_hotels[] = $hotel;
+            }
+        }
+        // se non invia stampo tutti gli hotel
+    } else {
+        $filtered_hotels = $hotels;
+    }
+
    
     foreach ($hotels as $hotel) {
         $distance =  $hotel['distance_to_center'] . ' Km';
         // var_dump($distance);
     }
-
-    $show_parking = $_GET['is_parking'];
-    var_dump($show_parking);
 
 
 ?>
@@ -65,7 +80,7 @@
         <form action="index.php" method= "GET">
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="is_parking" id="inlineCheckbox1" value="1">
+                <input class="form-check-input" type="checkbox" name="is_parking" id="inlineCheckbox1" <? ?>>
                 <label class="form-check-label" for="inlineCheckbox1">Parking</label>
             </div>
 
@@ -91,8 +106,8 @@
                 <label class="form-check-label" for="inlineRadio3">5 </label>
             </div>
 
-            <button type="button" class="btn btn-primary">Filter</button>
-            <button type="button" class="btn btn-secondary">Reset</button>
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
 
         </form>
 
@@ -110,7 +125,7 @@
             </thead>
 
             <tbody class="table-group-divider">
-                <?php foreach ($hotels as $hotel): ?>
+                <?php foreach ($filtered_hotels as $hotel): ?>
                 <tr>
                     <?php foreach($hotel as $key => $value): ?>
                         <td> 
